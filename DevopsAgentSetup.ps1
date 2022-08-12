@@ -5,7 +5,8 @@ param (
    [Parameter(ValuefromPipeline=$true,Mandatory=$true)] [string]$AZP_AGENT_NAME,
    [Parameter(ValuefromPipeline=$true,Mandatory=$true)] [string]$AZP_POOL)
   
-  $AZP_TOKEN_FILE = "C:/azp/.token"
+  $AZP_TOKEN_FILE = "C:\tmp\azp\agent.token"
+
   $AZP_TOKEN | Out-File -FilePath $AZP_TOKEN_FILE
   
   Write-Host "1. Determining matching Azure Pipelines agent..." -ForegroundColor Cyan
@@ -22,9 +23,9 @@ param (
   $wc = New-Object System.Net.WebClient
   $wc.DownloadFile($packageUrl, "$(Get-Location)/agent.zip")
   
-  Expand-Archive -Path "agent.zip" -DestinationPath "C:/azp/agent"
+  Expand-Archive -Path "agent.zip" -DestinationPath "C:\\tmp\\azp\\agent"
   
-  Set-Location "C:/azp/agent"
+  Set-Location "C:\\tmp\\azp\\agent"
 
   try
   {
