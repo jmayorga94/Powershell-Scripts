@@ -43,14 +43,7 @@ param (
   
     Write-Host "4. Running Azure Pipelines agent..." -ForegroundColor Cyan
   
-    .\run.cmd
-  }
-  finally
-  {
-    Write-Host "Cleanup. Removing Azure Pipelines agent..." -ForegroundColor Cyan
-  
-    .\config.cmd remove --unattended `
-      --auth PAT `
-      --token "$(Get-Content $AZP_TOKEN_FILE)"
+    .\run.cmd 
+    Exit
   }
 
