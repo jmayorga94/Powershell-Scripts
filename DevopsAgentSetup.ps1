@@ -43,7 +43,7 @@ param (
   
     Write-Host "4. Running Azure Pipelines agent..." -ForegroundColor Cyan
   
-    .\run.cmd 
-    Exit
+    .\run.cmd --once 
+ 
   }
 
